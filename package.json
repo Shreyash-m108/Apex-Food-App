@@ -1,5 +1,15 @@
 {
   "dependencies": {
-    "parcel": "^2.15.4"
+    "parcel": "^2.15.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shreyash-m108/Apex-Food-App.git"
   }
 }
