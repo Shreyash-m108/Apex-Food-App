@@ -1,5 +1,9 @@
 {
+  "name": "apex-food-delivery",
+  "version": "1.0.0",
+  "type": "module",
   "dependencies": {
+    "node-fetch": "^3.3.2",
     "parcel": "^2.15.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"

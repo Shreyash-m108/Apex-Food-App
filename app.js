@@ -44,35 +44,1160 @@ const Header = () => {
   )
 }
 
-const RestaurantCard = () => {
+const RestaurantCard = ({ resData }) => {
   return (
     <div className="res-card">
       <img
         className="res-img"
-        alt="Shree Foods"
-        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/6/9/408cdf63-eaa9-4470-91cc-116c671d56d9_415646.JPG"
+        alt="res-img"
+        src={
+          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+          resData.info.cloudinaryImageId
+        }
       />
-      <h3>Pizza Hut</h3>
-      <h4>Pizzas</h4>
-      <h4>4.3</h4>
-      <h5>Vishrambag</h5>
+      <h3>{resData.info.name}</h3>
+      <h4>{resData.info.cuisines}</h4>
+      <h4>{resData.info.avgRatingString}</h4>
+      <h4>{resData.info.sla.slaString}</h4>
+      <h5>{resData.info.costForTwo}</h5>
     </div>
   )
 }
+
+const restaurantsList = [
+  {
+    info: {
+      id: "415646",
+      name: "Pizza Hut",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2025/6/9/408cdf63-eaa9-4470-91cc-116c671d56d9_415646.JPG",
+      locality: "Shiv City Centre",
+      areaName: "Vishrambag",
+      costForTwo: "₹350 for two",
+      cuisines: ["Pizzas"],
+      avgRating: 4.3,
+      parentId: "721",
+      avgRatingString: "4.3",
+      totalRatingsString: "1.6K+",
+      sla: {
+        deliveryTime: 35,
+        lastMileTravel: 5.6,
+        serviceability: "SERVICEABLE",
+        slaString: "30-35 mins",
+        lastMileTravelString: "5.6 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-08-27 03:00:00",
+        opened: true,
+      },
+      badges: {},
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {},
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "ITEMS",
+        subHeader: "AT ₹99",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-1d07e956-a0e7-4999-befe-b97960dbc531",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/sangli/pizza-hut-shiv-city-centre-vishrambag-rest415646",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "425508",
+      name: "KFC",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2024/12/9/38b925a4-283e-4e88-8952-1ae42200bd5e_425508.JPG",
+      locality: "Sangli Miraj Road",
+      areaName: "Vishrambag",
+      costForTwo: "₹400 for two",
+      cuisines: ["Burgers", "Fast Food", "Rolls & Wraps"],
+      avgRating: 4.2,
+      parentId: "547",
+      avgRatingString: "4.2",
+      totalRatingsString: "1.2K+",
+      sla: {
+        deliveryTime: 30,
+        lastMileTravel: 5.6,
+        serviceability: "SERVICEABLE",
+        slaString: "25-30 mins",
+        lastMileTravelString: "5.6 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-08-27 01:00:00",
+        opened: true,
+      },
+      badges: {},
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {},
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "₹125 OFF",
+        subHeader: "ABOVE ₹999",
+        discountTag: "FLAT DEAL",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-1d07e956-a0e7-4999-befe-b97960dbc531",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/sangli/kfc-miraj-road-vishrambag-rest425508",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "109271",
+      name: "Natural Ice cream",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2025/3/21/d61ed15d-8174-4249-96ce-cda5995baa7b_109271.jpg",
+      locality: "Nishant Colony",
+      areaName: "Vishrambag",
+      costForTwo: "₹200 for two",
+      cuisines: ["Ice Cream", "Desserts"],
+      avgRating: 4.7,
+      veg: true,
+      parentId: "2093",
+      avgRatingString: "4.7",
+      totalRatingsString: "2.1K+",
+      sla: {
+        deliveryTime: 18,
+        lastMileTravel: 2.8,
+        serviceability: "SERVICEABLE",
+        slaString: "15-20 mins",
+        lastMileTravelString: "2.8 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-08-26 22:45:00",
+        opened: true,
+      },
+      badges: {
+        imageBadges: [
+          {
+            imageId: "v1695133679/badges/Pure_Veg111.png",
+            description: "pureveg",
+          },
+        ],
+      },
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {
+            badgeObject: [
+              {
+                attributes: {
+                  description: "pureveg",
+                  imageId: "v1695133679/badges/Pure_Veg111.png",
+                },
+              },
+            ],
+          },
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "20% OFF",
+        subHeader: "UPTO ₹50",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-1d07e956-a0e7-4999-befe-b97960dbc531",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/sangli/natural-ice-cream-nishant-colony-vishrambag-rest109271",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "411325",
+      name: "Ajwaa Restaurant",
+      cloudinaryImageId: "hgzrmbfukohyhkaqpnig",
+      locality: "Nishant Colony",
+      areaName: "Vishrambag",
+      costForTwo: "₹250 for two",
+      cuisines: ["Biryani", "Kebabs", "North Indian", "Indian"],
+      avgRating: 4,
+      parentId: "28408",
+      avgRatingString: "4.0",
+      totalRatingsString: "2.8K+",
+      sla: {
+        deliveryTime: 26,
+        lastMileTravel: 3,
+        serviceability: "SERVICEABLE",
+        slaString: "25-30 mins",
+        lastMileTravelString: "3.0 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-08-27 01:00:00",
+        opened: true,
+      },
+      badges: {},
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {},
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "ITEMS",
+        subHeader: "AT ₹99",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-1d07e956-a0e7-4999-befe-b97960dbc531",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/sangli/ajwaa-restaurant-nishant-colony-vishrambag-rest411325",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "490846",
+      name: "Grameen Kulfi",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2025/5/16/235569d6-15ad-4143-8b4a-6ea9aa55eaad_490846.jpg",
+      locality: "Kisan Chowk",
+      areaName: "Vishrambagh",
+      costForTwo: "₹120 for two",
+      cuisines: ["Ice Cream", "Desserts"],
+      avgRating: 4.8,
+      veg: true,
+      parentId: "12175",
+      avgRatingString: "4.8",
+      totalRatingsString: "164",
+      sla: {
+        deliveryTime: 17,
+        lastMileTravel: 2.8,
+        serviceability: "SERVICEABLE",
+        slaString: "15-20 mins",
+        lastMileTravelString: "2.8 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-08-26 23:00:00",
+        opened: true,
+      },
+      badges: {
+        imageBadges: [
+          {
+            imageId: "v1695133679/badges/Pure_Veg111.png",
+            description: "pureveg",
+          },
+        ],
+      },
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {
+            badgeObject: [
+              {
+                attributes: {
+                  description: "pureveg",
+                  imageId: "v1695133679/badges/Pure_Veg111.png",
+                },
+              },
+            ],
+          },
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "ITEMS",
+        subHeader: "AT ₹148",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-1d07e956-a0e7-4999-befe-b97960dbc531",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/sangli/grameen-kulfi-kisan-chowk-vishrambagh-rest490846",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "125302",
+      name: "Rahamatullah Restaurant",
+      cloudinaryImageId: "ac8b1bf3cfb12c26b477c0587ad62467",
+      locality: "Shivaji Road",
+      areaName: "Miraj",
+      costForTwo: "₹250 for two",
+      cuisines: ["Biryani", "North Indian", "Kebabs", "Chinese"],
+      avgRating: 4.4,
+      parentId: "164600",
+      avgRatingString: "4.4",
+      totalRatingsString: "10K+",
+      sla: {
+        deliveryTime: 40,
+        lastMileTravel: 9.6,
+        serviceability: "SERVICEABLE",
+        slaString: "35-40 mins",
+        lastMileTravelString: "9.6 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-08-26 23:30:00",
+        opened: true,
+      },
+      badges: {
+        imageBadges: [
+          {
+            imageId: "Rxawards/_CATEGORY-Biryani.png",
+            description: "Delivery!",
+          },
+          {
+            imageId:
+              "Ratnesh_Badges/Rx_Awards_2025/_Legendary%20Restaurants.png",
+            description: "Delivery!",
+          },
+        ],
+      },
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {
+            badgeObject: [
+              {
+                attributes: {
+                  description: "Delivery!",
+                  imageId: "Rxawards/_CATEGORY-Biryani.png",
+                },
+              },
+              {
+                attributes: {
+                  description: "Delivery!",
+                  imageId:
+                    "Ratnesh_Badges/Rx_Awards_2025/_Legendary%20Restaurants.png",
+                },
+              },
+            ],
+          },
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "₹150 OFF",
+        subHeader: "ABOVE ₹349",
+        discountTag: "FLAT DEAL",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-1d07e956-a0e7-4999-befe-b97960dbc531",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/sangli/rahamatullah-restaurant-shivaji-road-miraj-rest125302",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "771972",
+      name: "McDonald's Gourmet Burger Collection",
+      cloudinaryImageId: "7bed421fadb83a09c1a987698e66cf20",
+      locality: "Vishrambag",
+      areaName: "Sangli",
+      costForTwo: "₹400 for two",
+      cuisines: ["Burgers", "Beverages", "Cafe", "Desserts"],
+      avgRating: 4.7,
+      parentId: "10761",
+      avgRatingString: "4.7",
+      totalRatingsString: "23",
+      sla: {
+        deliveryTime: 23,
+        lastMileTravel: 3,
+        serviceability: "SERVICEABLE",
+        slaString: "20-25 mins",
+        lastMileTravelString: "3.0 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-08-26 23:59:00",
+        opened: true,
+      },
+      badges: {},
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {},
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "50% OFF",
+        subHeader: "UPTO ₹80",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-1d07e956-a0e7-4999-befe-b97960dbc531",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/sangli/mcdonalds-gourmet-burger-collection-vishrambag-sangli-rest771972",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "130321",
+      name: "Hotel Sarovar",
+      cloudinaryImageId: "1b08f7a9a88c370d0bad6c230bd600ee",
+      locality: "Vishrambag",
+      areaName: "Vishrambag",
+      costForTwo: "₹250 for two",
+      cuisines: ["Street Food", "Snacks", "North Indian"],
+      avgRating: 4.4,
+      veg: true,
+      parentId: "20302",
+      avgRatingString: "4.4",
+      totalRatingsString: "371",
+      sla: {
+        deliveryTime: 24,
+        lastMileTravel: 4,
+        serviceability: "SERVICEABLE",
+        slaString: "20-25 mins",
+        lastMileTravelString: "4.0 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-08-26 22:45:00",
+        opened: true,
+      },
+      badges: {
+        imageBadges: [
+          {
+            imageId: "v1695133679/badges/Pure_Veg111.png",
+            description: "pureveg",
+          },
+        ],
+      },
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {
+            badgeObject: [
+              {
+                attributes: {
+                  description: "pureveg",
+                  imageId: "v1695133679/badges/Pure_Veg111.png",
+                },
+              },
+            ],
+          },
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "₹50 OFF",
+        subHeader: "ABOVE ₹299",
+        discountTag: "FLAT DEAL",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-1d07e956-a0e7-4999-befe-b97960dbc531",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/sangli/hotel-sarovar-vishrambag-rest130321",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "415692",
+      name: "Jimis Burger",
+      cloudinaryImageId: "7fc108b2b8fdee5d9612d12d00413034",
+      locality: "Kuowad",
+      areaName: "Miraj sangli",
+      costForTwo: "₹600 for two",
+      cuisines: ["Burgers", "Fast Food", "Beverages"],
+      avgRating: 4.5,
+      parentId: "8122",
+      avgRatingString: "4.5",
+      totalRatingsString: "643",
+      sla: {
+        deliveryTime: 32,
+        lastMileTravel: 5.7,
+        serviceability: "SERVICEABLE",
+        slaString: "30-35 mins",
+        lastMileTravelString: "5.7 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-08-26 23:45:00",
+        opened: true,
+      },
+      badges: {
+        imageBadges: [
+          {
+            imageId: "newg.png",
+            description: "Gourmet",
+          },
+        ],
+      },
+      isOpen: true,
+      aggregatedDiscountInfoV2: {},
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {
+            badgeObject: [
+              {
+                attributes: {
+                  description: "Gourmet",
+                  imageId: "newg.png",
+                },
+              },
+            ],
+          },
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-1d07e956-a0e7-4999-befe-b97960dbc531",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/sangli/jimis-burger-kuowad-miraj-sangli-rest415692",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "669249",
+      name: "Hotel Shalimar",
+      cloudinaryImageId: "43148b61c6d120ed11007c8c1a10f30a",
+      locality: "Kothavale Galli ",
+      areaName: "Vakharbagh",
+      costForTwo: "₹250 for two",
+      cuisines: ["Biryani", "Maharashtrian"],
+      avgRating: 4.3,
+      parentId: "12793",
+      avgRatingString: "4.3",
+      totalRatingsString: "412",
+      sla: {
+        deliveryTime: 24,
+        lastMileTravel: 1.1,
+        serviceability: "SERVICEABLE",
+        slaString: "20-25 mins",
+        lastMileTravelString: "1.1 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-08-26 22:30:00",
+        opened: true,
+      },
+      badges: {
+        imageBadges: [
+          {
+            imageId: "android/static-assets/icons/big_rx.png",
+            description: "bolt!",
+          },
+        ],
+      },
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {
+            badgeObject: [
+              {
+                attributes: {
+                  description: "bolt!",
+                  imageId: "android/static-assets/icons/big_rx.png",
+                },
+              },
+            ],
+          },
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "10% OFF",
+        subHeader: "UPTO ₹40",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-1d07e956-a0e7-4999-befe-b97960dbc531",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/sangli/hotel-shalimar-kothavale-galli-vakharbagh-rest669249",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "771971",
+      name: "McCafe by McDonald's",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2024/8/19/087e7e72-2d32-41c4-af7c-5e5aedf2ac09_771971.jpg",
+      locality: "Vishrambag",
+      areaName: "Sangli",
+      costForTwo: "₹250 for two",
+      cuisines: ["Beverages", "Desserts"],
+      avgRating: 4.8,
+      veg: true,
+      parentId: "8263",
+      avgRatingString: "4.8",
+      totalRatingsString: "15",
+      sla: {
+        deliveryTime: 26,
+        lastMileTravel: 3,
+        serviceability: "SERVICEABLE",
+        slaString: "25-30 mins",
+        lastMileTravelString: "3.0 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-08-26 23:59:00",
+        opened: true,
+      },
+      badges: {},
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {},
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "50% OFF",
+        subHeader: "UPTO ₹80",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-1d07e956-a0e7-4999-befe-b97960dbc531",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/sangli/mccafe-by-mcdonalds-vishrambag-sangli-rest771971",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "113590",
+      name: "Domino's Pizza",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2025/8/8/bf3a92d4-501a-4a77-8975-7842845fc02b_113590.JPG",
+      locality: "Miraj Road",
+      areaName: "Vishrambag",
+      costForTwo: "₹400 for two",
+      cuisines: ["Pizzas", "Italian", "Pastas", "Desserts"],
+      avgRating: 4.3,
+      parentId: "2456",
+      avgRatingString: "4.3",
+      totalRatingsString: "1.4K+",
+      sla: {
+        deliveryTime: 25,
+        lastMileTravel: 1.9,
+        serviceability: "SERVICEABLE",
+        slaString: "20-25 mins",
+        lastMileTravelString: "1.9 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-08-26 23:59:00",
+        opened: true,
+      },
+      badges: {},
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {},
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "ITEMS",
+        subHeader: "AT ₹69",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-1d07e956-a0e7-4999-befe-b97960dbc531",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/sangli/dominos-pizza-miraj-road-vishrambag-rest113590",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "626247",
+      name: "Dalchini",
+      cloudinaryImageId: "ajgqkjpbeufoaqq5kiaf",
+      locality: "Dhamani Road",
+      areaName: "Dhamani Road",
+      costForTwo: "₹300 for two",
+      cuisines: ["North Indian", "Pizzas", "Chinese", "Indian"],
+      avgRating: 4.5,
+      veg: true,
+      parentId: "68219",
+      avgRatingString: "4.5",
+      totalRatingsString: "316",
+      sla: {
+        deliveryTime: 26,
+        lastMileTravel: 3.8,
+        serviceability: "SERVICEABLE",
+        slaString: "25-30 mins",
+        lastMileTravelString: "3.8 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-08-26 23:00:00",
+        opened: true,
+      },
+      badges: {
+        imageBadges: [
+          {
+            imageId: "v1695133679/badges/Pure_Veg111.png",
+            description: "pureveg",
+          },
+        ],
+      },
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {
+            badgeObject: [
+              {
+                attributes: {
+                  description: "pureveg",
+                  imageId: "v1695133679/badges/Pure_Veg111.png",
+                },
+              },
+            ],
+          },
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "10% OFF",
+        subHeader: "UPTO ₹80",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-1d07e956-a0e7-4999-befe-b97960dbc531",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/sangli/dalchini-dhamani-road-rest626247",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "771970",
+      name: "McDonald's",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2025/5/22/190fed5f-a18d-4cb9-b59d-f4c7d5141413_771970.JPG",
+      locality: "Vishrambag",
+      areaName: "Sangli",
+      costForTwo: "₹400 for two",
+      cuisines: ["Burgers", "Beverages", "Cafe", "Desserts"],
+      avgRating: 4.4,
+      parentId: "630",
+      avgRatingString: "4.4",
+      totalRatingsString: "834",
+      sla: {
+        deliveryTime: 19,
+        lastMileTravel: 3,
+        serviceability: "SERVICEABLE",
+        slaString: "15-20 mins",
+        lastMileTravelString: "3.0 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-08-26 23:59:00",
+        opened: true,
+      },
+      badges: {},
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {},
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "ITEMS",
+        subHeader: "AT ₹119",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-1d07e956-a0e7-4999-befe-b97960dbc531",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/sangli/mcdonalds-vishrambag-sangli-rest771970",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "596246",
+      name: "One Bite",
+      cloudinaryImageId: "xpji5zdmbwzr1ftmm4ih",
+      locality: "Vishrambag",
+      areaName: "Vijaynagar",
+      costForTwo: "₹200 for two",
+      cuisines: ["Pizzas", "Burgers"],
+      avgRating: 4.3,
+      parentId: "152198",
+      avgRatingString: "4.3",
+      totalRatingsString: "490",
+      sla: {
+        deliveryTime: 36,
+        lastMileTravel: 5.7,
+        serviceability: "SERVICEABLE",
+        slaString: "35-40 mins",
+        lastMileTravelString: "5.7 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-08-26 23:00:00",
+        opened: true,
+      },
+      badges: {
+        imageBadges: [
+          {
+            imageId: "Rxawards/_CATEGORY-Burger.png",
+            description: "Delivery!",
+          },
+        ],
+      },
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {
+            badgeObject: [
+              {
+                attributes: {
+                  description: "Delivery!",
+                  imageId: "Rxawards/_CATEGORY-Burger.png",
+                },
+              },
+            ],
+          },
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "ITEMS",
+        subHeader: "AT ₹79",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-1d07e956-a0e7-4999-befe-b97960dbc531",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/sangli/one-bite-vishrambag-vijaynagar-rest596246",
+      type: "WEBLINK",
+    },
+  },
+]
 
 const Body = () => {
   return (
     <div className="body">
       <div className="search">Search Bar</div>
       <div className="res-container">
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
+        <RestaurantCard resData={restaurantsList[0]} />
+        <RestaurantCard resData={restaurantsList[1]} />
+        <RestaurantCard resData={restaurantsList[2]} />
+        <RestaurantCard resData={restaurantsList[3]} />
+        <RestaurantCard resData={restaurantsList[4]} />
+        <RestaurantCard resData={restaurantsList[5]} />
+        <RestaurantCard resData={restaurantsList[6]} />
+        <RestaurantCard resData={restaurantsList[7]} />
+        <RestaurantCard resData={restaurantsList[8]} />
+        <RestaurantCard resData={restaurantsList[9]} />
+        <RestaurantCard resData={restaurantsList[10]} />
+        <RestaurantCard resData={restaurantsList[11]} />
+        <RestaurantCard resData={restaurantsList[12]} />
+        <RestaurantCard resData={restaurantsList[13]} />
       </div>
     </div>
   )
