@@ -45,6 +45,14 @@ const Header = () => {
 }
 
 const RestaurantCard = ({ resData }) => {
+  const {
+    cloudinaryImageId,
+    name,
+    cuisines,
+    avgRatingString,
+    costForTwo,
+    sla,
+  } = resData?.info
   return (
     <div className="res-card">
       <img
@@ -52,14 +60,14 @@ const RestaurantCard = ({ resData }) => {
         alt="res-img"
         src={
           "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          resData.info.cloudinaryImageId
+          cloudinaryImageId
         }
       />
-      <h3>{resData.info.name}</h3>
-      <h4>{resData.info.cuisines}</h4>
-      <h4>{resData.info.avgRatingString}</h4>
-      <h4>{resData.info.sla.slaString}</h4>
-      <h5>{resData.info.costForTwo}</h5>
+      <h3>{name}</h3>
+      <h4>{cuisines.join(", ")}</h4>
+      <h4>{avgRatingString}</h4>
+      <h4>{sla.slaString}</h4>
+      <h5>{costForTwo}</h5>
     </div>
   )
 }
@@ -1184,20 +1192,9 @@ const Body = () => {
     <div className="body">
       <div className="search">Search Bar</div>
       <div className="res-container">
-        <RestaurantCard resData={restaurantsList[0]} />
-        <RestaurantCard resData={restaurantsList[1]} />
-        <RestaurantCard resData={restaurantsList[2]} />
-        <RestaurantCard resData={restaurantsList[3]} />
-        <RestaurantCard resData={restaurantsList[4]} />
-        <RestaurantCard resData={restaurantsList[5]} />
-        <RestaurantCard resData={restaurantsList[6]} />
-        <RestaurantCard resData={restaurantsList[7]} />
-        <RestaurantCard resData={restaurantsList[8]} />
-        <RestaurantCard resData={restaurantsList[9]} />
-        <RestaurantCard resData={restaurantsList[10]} />
-        <RestaurantCard resData={restaurantsList[11]} />
-        <RestaurantCard resData={restaurantsList[12]} />
-        <RestaurantCard resData={restaurantsList[13]} />
+        {restaurantsList.map((restaurant) => (
+          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+        ))}
       </div>
     </div>
   )
