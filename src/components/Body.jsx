@@ -1,10 +1,20 @@
 import RestaurantCard from "./RestaurantCard"
-import restaurantsList from "../utils/Reslist"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState(restaurantsList)
+  const [listOfRestaurants, setListOfRestaurants] = useState([])
 
+  useEffect(()=>{
+    getData()
+  }, [])
+
+  const getData = async ()=>{
+    const data= await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.8530093&lng=74.56234789999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+
+    const jsonData = await data.json()
+    setListOfRestaurants(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    
+  }
   return (
     <div className="body">
       <div className="rating-button">
