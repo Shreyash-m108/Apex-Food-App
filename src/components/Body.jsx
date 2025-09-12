@@ -1,21 +1,29 @@
-import RestaurantCard from "./RestaurantCard"
-import { useEffect, useState } from "react"
+import RestaurantCard from "./RestaurantCard";
+import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState([])
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
 
-  useEffect(()=>{
-    getData()
-  }, [])
+  useEffect(() => {
+    getData();
+  }, []);
 
-  const getData = async ()=>{
-    const data= await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.8530093&lng=74.56234789999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+  const getData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.8530093&lng=74.56234789999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
 
-    const jsonData = await data.json()
-    setListOfRestaurants(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-    
-  }
-  return (
+    const jsonData = await data.json();
+    setListOfRestaurants(
+      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+  };
+
+  return listOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="rating-button">
         <button
@@ -23,8 +31,8 @@ const Body = () => {
           onClick={() => {
             const filterList = listOfRestaurants.filter(
               (res) => res.info.avgRating > 4.3
-            )
-            setListOfRestaurants(filterList)
+            );
+            setListOfRestaurants(filterList);
           }}
         >
           Top Rated
@@ -36,6 +44,6 @@ const Body = () => {
         ))}
       </div>
     </div>
-  )
-}
-export default Body
+  );
+};
+export default Body;

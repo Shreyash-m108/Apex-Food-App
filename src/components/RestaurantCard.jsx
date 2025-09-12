@@ -1,4 +1,4 @@
-import { CDN_URL } from "../utils/constant"
+import { CDN_URL } from "../utils/constant";
 const RestaurantCard = ({ resData }) => {
   const {
     cloudinaryImageId,
@@ -7,7 +7,7 @@ const RestaurantCard = ({ resData }) => {
     avgRatingString,
     costForTwo,
     sla,
-  } = resData?.info
+  } = resData?.info;
   return (
     <div className="res-card">
       <img
@@ -21,7 +21,7 @@ const RestaurantCard = ({ resData }) => {
       <h4>{sla.slaString}</h4>
       <h5>{costForTwo}</h5>
     </div>
-  )
-}
+  );
+};
 
-export default RestaurantCard
+export default RestaurantCard;
