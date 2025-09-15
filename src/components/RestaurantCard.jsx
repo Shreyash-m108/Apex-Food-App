@@ -18,7 +18,7 @@ const RestaurantCard = ({ resData }) => {
       <h3>{name}</h3>
       <h4>{cuisines.join(", ")}</h4>
       <h4>{avgRatingString}</h4>
-      <h4>{sla.slaString}</h4>
+      <h4>{sla?.slaString}</h4>
       <h5>{costForTwo}</h5>
     </div>
   );

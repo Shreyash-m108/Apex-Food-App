@@ -22,10 +22,12 @@
   margin: 10px;
 }
 
-.rating-button {
+.rating-button,
+.search-bar {
   padding: 10px;
 }
-.top-rated {
+.top-rated,
+.search-btn {
   cursor: pointer;
 }
 
@@ -102,5 +104,10 @@
   border-radius: 4px;
 }
 
-.login-btn {
+.filters {
+  display: flex;
+}
+
+.input-text {
+  margin-right: 10px;
 }
