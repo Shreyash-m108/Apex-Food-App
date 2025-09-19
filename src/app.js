@@ -1,19 +1,44 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-import Header from "./components/Header"
-import Body from "./components/Body"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Header from "./components/Header";
+import Body from "./components/Body";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
-//low level design for app
-
+// layout with header always visible
 const AppLayout = () => {
   return (
     <div className="mainApp">
       <Header />
-      <Body />
+      <Outlet /> {/* child routes will render here */}
     </div>
-  )
-}
+  );
+};
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <h1>Something Went Wrong "/"</h1>,
+    children: [
+      {
+        path: "/", // home page
+        element: <Body />,
+      },
+      {
+        path: "about",
+        element: <About />,
+        errorElement: <h1>Something Went Wrong "/about"</h1>,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+        errorElement: <h1>Something Went Wrong "/contact"</h1>,
+      },
+    ],
+  },
+]);
 
-const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(<AppLayout />)
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<RouterProvider router={router} />);

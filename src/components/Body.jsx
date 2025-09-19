@@ -6,27 +6,66 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   let [filterRestaurants, setFilterRestaurants] = useState([]);
   let [searchText, setSearchText] = useState("");
+  let [offSet, setOffset] = useState("");
+  let [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     getData();
   }, []);
 
-  const getData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.8530093&lng=74.56234789999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+  const getData = async (nextOffset = "") => {
+    const url = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.8530093&lng=74.56234789999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING${
+      nextOffset ? `&offset=${nextOffset}` : ""
+    }`;
 
+    const data = await fetch(url);
     const jsonData = await data.json();
-    setListOfRestaurants(
+
+    const newRestaurants =
       jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    setFilterRestaurants(
-      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    console.log(jsonData);
+        ?.restaurants || [];
+
+    setListOfRestaurants((prev) => {
+      const merged = [...prev, ...newRestaurants];
+      const unique = merged.filter(
+        (item, index, self) =>
+          index === self.findIndex((t) => t.info.id === item.info.id)
+      );
+      return unique;
+    });
+    setFilterRestaurants((prev) => {
+      const merged = [...prev, ...newRestaurants];
+      const unique = merged.filter(
+        (item, index, self) =>
+          index === self.findIndex((t) => t.info.id === item.info.id)
+      );
+      return unique;
+    }); 
+
+    const next = jsonData?.data?.pageOffset?.nextOffset;
+
+    if (next) {
+      setOffset(next);
+    } else {
+      setHasMore(false);
+    }
   };
+
+  useEffect(() => {
+    function handleScroll() {
+      if (
+        window.innerHeight + document.documentElement.scrollTop + 100 >=
+        document.documentElement.scrollHeight
+      ) {
+        if (hasMore) {
+          getData(offSet);
+        }
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [offSet, hasMore]);
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
@@ -83,4 +122,5 @@ const Body = () => {
     </div>
   );
 };
+
 export default Body;
