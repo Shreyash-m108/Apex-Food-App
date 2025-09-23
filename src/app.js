@@ -4,8 +4,8 @@ import Header from "./components/Header";
 import Body from "./components/Body";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 // layout with header always visible
 const AppLayout = () => {
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         errorElement: <h1>Something Went Wrong "/contact"</h1>,
       },
       {
-        path: "/restaurant/:resId",
+        path: "/restaurant",
         element: <RestaurantMenu />,
       },
     ],
