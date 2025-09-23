@@ -111,3 +111,7 @@
 .input-text {
   margin-right: 10px;
 }
+
+.res-name-info {
+  display: flex;
+}
