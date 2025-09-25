@@ -12,6 +12,10 @@
   padding: 0px 20px;
 }
 
+.nav-items > ul > li:hover {
+  transform: translateY(-2px);
+}
+
 .nav-items > ul {
   display: flex;
   list-style-type: none;
@@ -20,6 +24,8 @@
 .nav-items > ul > li {
   padding: 10px;
   margin: 10px;
+  transition: transform 0.2s ease-in-out;
+  display: inline-block;
 }
 
 .rating-button,
@@ -114,4 +120,9 @@
 
 .res-name-info {
   display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

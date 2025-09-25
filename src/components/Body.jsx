@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -40,7 +41,7 @@ const Body = () => {
           index === self.findIndex((t) => t.info.id === item.info.id)
       );
       return unique;
-    }); 
+    });
 
     const next = jsonData?.data?.pageOffset?.nextOffset;
 
@@ -116,7 +117,9 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filterRestaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <Link key={restaurant.info.id} to={/restaurant/ + restaurant.info.id}>
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>

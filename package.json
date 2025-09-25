@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "parcel index.html --cache-dir .parcel-cache",
-    "build": "parcel build index.html --cache-dir .parcel-cache"
+    "build": "parcel build index.html "
   },
   "repository": {
     "type": "git",
