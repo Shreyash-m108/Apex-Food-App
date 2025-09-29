@@ -27,6 +27,24 @@
   transition: transform 0.2s ease-in-out;
   display: inline-block;
 }
+.login-button {
+  /* Remove default button appearance */
+  background: none;
+  border: none; /* Add a clean border */
+  padding: 8px 16px; /* Give it some space inside */
+  margin: 0;
+
+  /* Match the font of your other nav items */
+  font-family: inherit;
+  font-size: 20px; /* Adjust if needed to match "Home", "About" etc. */
+  color: #333;
+
+  /* Final touches */
+  cursor: pointer; /* Add slightly rounded corners */
+  transition: background-color 0.2s ease; /* Smooth hover effect */
+}
+
+/* Add a hover effect for better user experience */
 
 .rating-button,
 .search-bar {
@@ -118,8 +136,215 @@
   margin-right: 10px;
 }
 
-.res-name-info {
+.menu {
+  max-width: 800px; /* Prevents the layout from becoming too wide on large screens */
+  margin: 20px auto; /* Centers the container on the page */
+  padding: 20px;
+  font-family: Arial, sans-serif; /* A clean, readable font */
+  color: #333;
+}
+
+/* Header section with restaurant name and rating */
+.restaurant-header {
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.restaurant-header h1 {
+  font-size: 2.5rem; /* Larger font size for the restaurant name */
+  margin-bottom: 8px;
+  color: #282c3f;
+}
+
+/* Container for details like cuisine, cost, and rating */
+.restaurant-details {
   display: flex;
+  justify-content: space-between; /* Pushes cuisine info to the left and rating to the right */
+  align-items: center;
+}
+
+.restaurant-cuisine {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* A box to highlight the rating */
+.rating-box {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.rating-box .avg-rating {
+  color: #4caf50; /* Green color for good ratings */
+  font-weight: bold;
+  font-size: 1.2rem;
+  display: block; /* Puts it on its own line */
+  padding-bottom: 4px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.rating-box .total-ratings {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 4px;
+}
+
+/* Styling for the "Menu" heading */
+.menu h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Styling for the menu list container */
+.menu-items-list {
+  list-style-type: none; /* Removes the default bullet points */
+  padding: 0;
+}
+
+/* Styling for each individual menu item */
+.menu-item {
+  display: flex;
+  justify-content: space-between; /* Pushes item name and price apart */
+  align-items: center;
+  padding: 20px 10px;
+  border-bottom: 1px dashed #ccc; /* A subtle separator */
+}
+
+.menu-item-details .item-name {
+  font-weight: 600; /* Makes the item name bold */
+  font-size: 1.1rem;
+}
+
+.menu-item-price {
+  font-weight: 500;
+  color: #444;
+}
+
+.about-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; /* Make it take up most of the screen height */
+  padding: 20px;
+  position: relative;
+  overflow: hidden; /* Hide parts of shapes that go outside */
+  background: #1c1c1c; /* A dark background makes the glass pop */
+}
+
+.glass-card {
+  position: relative;
+  z-index: 2; /* Make sure the card is above the background shapes */
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  color: #fff;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  margin-bottom: 20px;
+}
+.profile-name {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 1px;
+}
+.profile-bio {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 10px 0 30px 0;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+.profile-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* The Button */
+.profile-button {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #f0f0f0;
+  color: #1c1c1c;
+  font-weight: bold;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.profile-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+}
+
+/* Decorative background shapes for extra wow-factor */
+.background-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.background-shapes::before,
+.background-shapes::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+/* A purple circle */
+.background-shapes::before {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(45deg, #8a2be2, #4b0082);
+  bottom: -150px;
+  left: -100px;
+}
+
+/* A teal circle */
+.background-shapes::after {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(45deg, #20b2aa, #008080);
+  top: -100px;
+  right: -120px;
 }
 
 a {

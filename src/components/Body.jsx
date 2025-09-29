@@ -67,6 +67,7 @@ const Body = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [offSet, hasMore]);
+  console.log("rendering body component");
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />

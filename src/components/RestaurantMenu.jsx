@@ -30,21 +30,35 @@ const RestaurantMenu = () => {
 
   return (
     <div className="menu">
-      <h1>{name}</h1>
-      <div className="res-name-info">
-        <p>
-          {cuisines.join(", ")}-{costForTwoMessage}
-        </p>
-        <h3>{avgRating}</h3>
-        <h4>{totalRatingsString}</h4>
+      <div className="restaurant-header">
+        <h1>{name}</h1>
+
+        <div className="restaurant-details">
+          <p className="restaurant-cuisine">
+            {cuisines.join(", ")} - {costForTwoMessage}
+          </p>
+          <div className="rating-box">
+            <span className="avg-rating">⭐ {avgRating}</span>
+            <span className="total-ratings">{totalRatingsString}</span>
+          </div>
+        </div>
       </div>
 
-      <h2>Menu: </h2>
-      <ul>
+      <h2>Menu</h2>
+
+      <ul className="menu-items-list">
         {itemCards.map((item) => (
-          <li key={item.card.info.id}>
-            {item.card.info.name}-{"Rs."}
-            {item.card.info.defaultPrice / 100 || item.card.info.price / 100}
+          <li className="menu-item" key={item.card.info.id}>
+            <div className="menu-item-details">
+              <span className="item-name">{item.card.info.name}</span>
+            </div>
+            <div className="menu-item-price">
+              <span>
+                ₹
+                {item.card.info.defaultPrice / 100 ||
+                  item.card.info.price / 100}
+              </span>
+            </div>
           </li>
         ))}
       </ul>
