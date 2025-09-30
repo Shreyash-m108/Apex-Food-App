@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -68,6 +69,10 @@ const Body = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [offSet, hasMore]);
   console.log("rendering body component");
+
+  const status = useOnlineStatus();
+  if (status === false)
+    return <h1>It seems to be you are disconnected from internet  </h1>;
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
