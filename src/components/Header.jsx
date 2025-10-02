@@ -11,27 +11,29 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="flex">
-      <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
+    <div className="flex justify-between bg-pink-200 shadow-lg px-1.5 mx-1">
+      <div className="logo-container ">
+        <img className="w-40 " src={LOGO_URL} />
       </div>
 
-      <div className="nav-items">
-        <ul>
-          <li>
+      <div className="flex items-center">
+        <ul className="flex mx-4 px-4 cursor-pointer">
+          <li className="px-3 rounded-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
             <Link to={"/"}>Home</Link>
           </li>
-          <li>
+          <li className="px-3 rounded-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
             <Link to={"/about"}>About</Link>
           </li>
-          <li>
+          <li className="px-3 rounded-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
             <Link to={"/contact"}>Contact</Link>
           </li>
-          <li>Cart</li>
-          <li>
+          <li className="px-3 rounded-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+            Cart
+          </li>
+          <li className="px-3 rounded-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
             <Link to={"/grocery"}>Grocery</Link>
           </li>
-          <li>
+          <li className="px-3 rounded-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
             <button
               className="login-button"
               onClick={() => {

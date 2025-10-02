@@ -72,24 +72,24 @@ const Body = () => {
 
   const status = useOnlineStatus();
   if (status === false)
-    return <h1>It seems to be you are disconnected from internet  </h1>;
+    return <h1>It seems to be you are disconnected from internet </h1>;
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filters">
-        <div className="search-bar">
+      <div className="filter flex">
+        <div className="m-4">
           <input
             type="text"
-            className="input-text"
+            className="input-text border-2 rounded-lg "
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
-            className="search-btn"
+            className="px-4 bg-green-400 hover:bg-green-700 text-white mx-4 border-1 border-black rounded-lg cursor-pointer hover:-translate-y-1 transition-all duration-300"
             onClick={() => {
               const filterList = listOfRestaurants.filter((res) => {
                 const nameMatch = res.info?.name
@@ -109,7 +109,7 @@ const Body = () => {
         </div>
         <div className="rating-button">
           <button
-            className="top-rated"
+            className="px-3 m-4 border-1 rounded-lg cursor-pointer bg-gray-100 hover:-translate-y-1 transition-all duration-300"
             onClick={() => {
               const filterList = listOfRestaurants.filter(
                 (res) => res.info.avgRating > 4.3
