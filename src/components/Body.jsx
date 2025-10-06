@@ -10,64 +10,78 @@ const Body = () => {
   let [searchText, setSearchText] = useState("");
   let [offSet, setOffset] = useState("");
   let [hasMore, setHasMore] = useState(true);
+  let [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async (nextOffset = "") => {
-    const url = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.8530093&lng=74.56234789999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING${
-      nextOffset ? `&offset=${nextOffset}` : ""
-    }`;
+    if (loading || !hasMore) return; // stop double calls
+    setLoading(true);
 
-    const data = await fetch(url);
-    const jsonData = await data.json();
+    try {
+      const base =
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.8530093&lng=74.56234789999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 
-    const newRestaurants =
-      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants || [];
+      const url = nextOffset
+        ? `${base}&offset=${encodeURIComponent(nextOffset)}`
+        : base;
 
-    setListOfRestaurants((prev) => {
-      const merged = [...prev, ...newRestaurants];
-      const unique = merged.filter(
-        (item, index, self) =>
-          index === self.findIndex((t) => t.info.id === item.info.id)
+      const data = await fetch(url);
+      const jsonData = await data.json();
+
+      // find the card that has restaurants (index varies)
+      const cards = jsonData?.data?.cards || [];
+      const restCard = cards.find(
+        (c) =>
+          c?.card?.card?.gridElements?.infoWithStyle?.restaurants ||
+          c?.gridElements?.infoWithStyle?.restaurants
       );
-      return unique;
-    });
-    setFilterRestaurants((prev) => {
-      const merged = [...prev, ...newRestaurants];
-      const unique = merged.filter(
-        (item, index, self) =>
-          index === self.findIndex((t) => t.info.id === item.info.id)
-      );
-      return unique;
-    });
 
-    const next = jsonData?.data?.pageOffset?.nextOffset;
+      const newRestaurants =
+        restCard?.card?.card?.gridElements?.infoWithStyle?.restaurants ??
+        restCard?.gridElements?.infoWithStyle?.restaurants ??
+        [];
 
-    if (next) {
-      setOffset(next);
-    } else {
+      // merge + dedupe by id (simple & fast)
+      const mergeUnique = (prev, incoming) => {
+        const ids = new Set(prev.map((r) => r.info.id));
+        const add = incoming.filter((r) => !ids.has(r.info.id));
+        return [...prev, ...add];
+      };
+
+      setListOfRestaurants((prev) => mergeUnique(prev, newRestaurants));
+      setFilterRestaurants((prev) => mergeUnique(prev, newRestaurants));
+
+      const next = jsonData?.data?.pageOffset?.nextOffset || "";
+      if (next) {
+        setOffset(next);
+        setHasMore(true);
+      } else {
+        setHasMore(false);
+      }
+    } catch (e) {
+      console.error(e);
       setHasMore(false);
+    } finally {
+      setLoading(false);
     }
   };
-
   useEffect(() => {
     function handleScroll() {
-      if (
-        window.innerHeight + document.documentElement.scrollTop + 100 >=
-        document.documentElement.scrollHeight
-      ) {
-        if (hasMore) {
-          getData(offSet);
-        }
+      const nearBottom =
+        window.innerHeight + document.documentElement.scrollTop + 150 >=
+        document.documentElement.scrollHeight;
+
+      if (nearBottom && hasMore && !loading) {
+        getData(offSet);
       }
     }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [offSet, hasMore]);
+  }, [offSet, hasMore, loading]);
   console.log("rendering body component");
 
   const status = useOnlineStatus();
@@ -111,22 +125,38 @@ const Body = () => {
           <button
             className="px-3 m-4 border-1 rounded-lg cursor-pointer bg-gray-100 hover:-translate-y-1 transition-all duration-300"
             onClick={() => {
-              const filterList = listOfRestaurants.filter(
-                (res) => res.info.avgRating > 4.3
-              );
-              setListOfRestaurants(filterList);
+              const filterList = listOfRestaurants.filter((res) => {
+                const rating =
+                  Number(res?.info?.avgRating) ||
+                  Number(res?.info?.avgRatingString) ||
+                  0;
+                return rating > 4.5;
+              });
+              setFilterRestaurants(filterList); // 👈 update the list you render
             }}
           >
             Top Rated
           </button>
+          <button
+            className="px-3 m-4 border-1 rounded-lg cursor-pointer bg-gray-100 hover:-translate-y-1 transition-all duration-300"
+            onClick={() => setFilterRestaurants(listOfRestaurants)}
+          >
+            Clear
+          </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-        {filterRestaurants.map((restaurant) => (
-          <Link key={restaurant.info.id} to={/restaurant/ + restaurant.info.id}>
-            <RestaurantCard resData={restaurant} />
-          </Link>
-        ))}
+      <div className="flex justify-center p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl w-full items-stretch">
+          {filterRestaurants.map((restaurant) => (
+            <Link
+              key={restaurant.info.id}
+              to={`/restaurant/${restaurant.info.id}`}
+              className="h-full" // 👈 make each link fill its grid cell
+            >
+              <RestaurantCard resData={restaurant} />
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

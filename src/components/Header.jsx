@@ -12,7 +12,9 @@ const Header = () => {
   return (
     <header className="flex justify-between items-center bg-slate-50 shadow-md px-6 py-2">
       <div className="logo-container ">
-        <img className="w-32" src={LOGO_URL} alt="App Logo" />
+        <Link to={"/"}>
+          <img className="w-32" src={LOGO_URL} alt="App Logo" />
+        </Link>
       </div>
 
       <div className="flex items-center">
