@@ -8,6 +8,7 @@ const RestaurantCard = ({ resData }) => {
     costForTwo,
     sla,
   } = resData?.info;
+
   return (
     <div className="flex flex-col h-full bg-gray-200 hover:bg-gray-300 rounded-lg overflow-hidden shadow-lg hover:-translate-y-1 transition-all duration-300 group">
       {/* Consistent media area */}

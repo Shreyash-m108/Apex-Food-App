@@ -1,5 +1,5 @@
 import RestaurantCard from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -8,82 +8,36 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   let [filterRestaurants, setFilterRestaurants] = useState([]);
   let [searchText, setSearchText] = useState("");
-  let [offSet, setOffset] = useState("");
-  let [hasMore, setHasMore] = useState(true);
-  let [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getData();
   }, []);
 
-  const getData = async (nextOffset = "") => {
-    if (loading || !hasMore) return; // stop double calls
-    setLoading(true);
+  const getData = async () => {
+    const url =
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.8530093&lng=74.56234789999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 
-    try {
-      const base =
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.8530093&lng=74.56234789999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+    const data = await fetch(url);
+    const jsonData = await data.json();
 
-      const url = nextOffset
-        ? `${base}&offset=${encodeURIComponent(nextOffset)}`
-        : base;
+    // find the card that has restaurants (index varies)
+    const cards = jsonData?.data?.cards || [];
+    const restCard = cards.find(
+      (c) =>
+        c?.card?.card?.gridElements?.infoWithStyle?.restaurants ||
+        c?.gridElements?.infoWithStyle?.restaurants
+    );
 
-      const data = await fetch(url);
-      const jsonData = await data.json();
+    const newRestaurants =
+      restCard?.card?.card?.gridElements?.infoWithStyle?.restaurants ??
+      restCard?.gridElements?.infoWithStyle?.restaurants ??
+      [];
 
-      // find the card that has restaurants (index varies)
-      const cards = jsonData?.data?.cards || [];
-      const restCard = cards.find(
-        (c) =>
-          c?.card?.card?.gridElements?.infoWithStyle?.restaurants ||
-          c?.gridElements?.infoWithStyle?.restaurants
-      );
-
-      const newRestaurants =
-        restCard?.card?.card?.gridElements?.infoWithStyle?.restaurants ??
-        restCard?.gridElements?.infoWithStyle?.restaurants ??
-        [];
-
-      // merge + dedupe by id (simple & fast)
-      const mergeUnique = (prev, incoming) => {
-        const ids = new Set(prev.map((r) => r.info.id));
-        const add = incoming.filter((r) => !ids.has(r.info.id));
-        return [...prev, ...add];
-      };
-
-      setListOfRestaurants((prev) => mergeUnique(prev, newRestaurants));
-      setFilterRestaurants((prev) => mergeUnique(prev, newRestaurants));
-
-      const next = jsonData?.data?.pageOffset?.nextOffset || "";
-      if (next) {
-        setOffset(next);
-        setHasMore(true);
-      } else {
-        setHasMore(false);
-      }
-    } catch (e) {
-      console.error(e);
-      setHasMore(false);
-    } finally {
-      setLoading(false);
-    }
+    setListOfRestaurants(newRestaurants);
+    setFilterRestaurants(newRestaurants);
   };
-  useEffect(() => {
-    function handleScroll() {
-      const nearBottom =
-        window.innerHeight + document.documentElement.scrollTop + 150 >=
-        document.documentElement.scrollHeight;
 
-      if (nearBottom && hasMore && !loading) {
-        getData(offSet);
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [offSet, hasMore, loading]);
-  console.log("rendering body component");
-
+  
   const status = useOnlineStatus();
   if (status === false)
     return <h1>It seems to be you are disconnected from internet </h1>;
@@ -151,7 +105,7 @@ const Body = () => {
             <Link
               key={restaurant.info.id}
               to={`/restaurant/${restaurant.info.id}`}
-              className="h-full" // 👈 make each link fill its grid cell
+              className="h-full"
             >
               <RestaurantCard resData={restaurant} />
             </Link>

@@ -1,0 +1,225 @@
+{
+  "menu": {
+    "resIds": {
+      "415646": {
+        "card": {
+          "itemCards": [
+            {
+              "info": {
+                "id": "76627084",
+                "name": "Veggie Feast",
+                "category": "Veg Pizza",
+                "description": "Serves 1 | Herbed onion and green capsicum, juicy sweet corn & mozzarella cheese with flavourful pan sauce (PAN Per/Med-269 Kcal/100g | TnC-274 Kcal/100g | Stuffed Crust Add : Per: 295 Kcal/Pizza | Med: 448kcal/Pizza| Ultimate Cheese : PER: 250 kcal/Pizza | MED: 375 kcal/Pizza. Contains Cereals containing Gluten (Wheat), Soya and Milk & Milk Products.",
+                "imageId": "FOOD_CATALOG/IMAGES/CMS/2025/4/17/ee9985e4-828b-4a0e-b99b-656442e80877_7492ef8f-5b57-4ca4-86e6-4a8981c38510.jpg_compressed",
+                "inStock": 1,
+                "isVeg": 1
+              }
+            },
+            {
+              "info": {
+                "id": "76627118",
+                "name": "Tandoori Paneer",
+                "category": "Veg Pizza",
+                "description": "Serves 1 | It's our signature. Spiced paneer, crunchy onions & green capsicum, spicy red paprika with delicious tandoori sauce and mozzarella cheese! (PAN Per/Med-335 Kcal/100g | TnC-326 Kcal/100g | Stuffed Crust Add : Per: 295 Kcal/Pizza | Med: 448kcal/Pizza| Ultimate Cheese : PER: 250 kcal/Pizza | MED: 375 kcal/Pizza. Contains Cereals containing Gluten (Wheat), Soya and Milk & Milk Products.",
+                "imageId": "FOOD_CATALOG/IMAGES/CMS/2025/4/17/92cfd7cf-0504-4444-befc-ff4aee0486cd_bac2d634-a13d-4cc3-828e-b2ad12dc73c0.jpg_compressed",
+                "inStock": 1,
+                "isVeg": 1
+              }
+            },
+            {
+              "info": {
+                "id": "76627124",
+                "name": "Country Feast",
+                "category": "Veg Pizza",
+                "description": "Serves 1 | Loaded with herbed onion & green capsicum, sweet corn, tomato with signature pan sauce and mozzarella cheese. It's a feast you can't refuse (PAN Per/Med-244 Kcal/100g | TnC-282 Kcal/100g | Stuffed Crust Add : Per: 295 Kcal/Pizza | Med: 448kcal/Pizza| Ultimate Cheese : PER: 250 kcal/Pizza | MED: 375 kcal/Pizza. Contains Cereals containing Gluten (Wheat), Soya and Milk & Milk Products.",
+                "imageId": "FOOD_CATALOG/IMAGES/CMS/2025/4/16/78bc0268-a19e-4c65-8ea2-4b4626898698_c52e5d95-51c4-4239-92b0-70b1ab93d12f.jpg_compressed",
+                "inStock": 1,
+                "isVeg": 1
+              }
+            },
+            {
+              "info": {
+                "id": "87274565",
+                "name": "Veggie Supreme",
+                "category": "Veg Pizza",
+                "description": "Serves 1 | A supreme combination of black olives, green capsicum, mushroom, onion, spicy red paprika & juicy sweet corn with flavourful pan sauce and mozzarella cheese. (PAN Per/Med-254 Kcal/100g | TnC-258 Kcal/100g | Stuffed Crust Add : Per: 295 Kcal/Pizza | Med: 448kcal/Pizza| Ultimate Cheese : PER: 250 kcal/Pizza | MED: 375 kcal/Pizza. Contains Cereals containing Gluten (Wheat), Soya and Milk & Milk Products.",
+                "imageId": "FOOD_CATALOG/IMAGES/CMS/2025/4/17/2f6b03bf-3bb0-40cd-a5b8-7f0cfdf21998_7cc4fe8f-d5f8-44ed-ada9-0a719fc4d89f.jpg_compressed",
+                "inStock": 1,
+                "isVeg": 1
+              }
+            },
+            {
+              "info": {
+                "id": "76627138",
+                "name": "Chicken Sausage",
+                "category": "Non Veg Pizza",
+                "description": "Serves 1 | Pizza topped with chicken n cheese sausages & crunchy onions, flavourful pan sauce and mozzarella cheese (PAN Per/Med-310 Kcal/100g | TnC-312 Kcal/100g | Stuffed Crust Add : Per: 295 Kcal/Pizza | Med: 448kcal/Pizza| Ultimate Cheese : PER: 250 kcal/Pizza | MED: 375 kcal/Pizza| Stuff Crust Chicken Seekh Kebab Add : Per: 389 kcal/Pizza | Med: 614 Kcal/Pizza. Contains Cereals containing Gluten (Wheat), Soya and Milk & Milk Products.",
+                "imageId": "FOOD_CATALOG/IMAGES/CMS/2025/4/16/4b4ded4e-1e01-4d35-bebd-b055a22cb43a_2b6ef11b-6134-4744-87d5-9f49a9042d50.jpg_compressed",
+                "inStock": 1
+              }
+            },
+            {
+              "info": {
+                "id": "76627153",
+                "name": "Murg Malai Chicken",
+                "category": "Non Veg Pizza",
+                "description": "Serves 1 | Amazingly flavourful chicken malai tikka, herbed onion & green capsicum, spicy red paprika with flavourful pan sauce and mozzarella cheese (PAN Per/Med-269 Kcal/100g | TnC-299 Kcal/100g | Stuffed Crust Add : Per: 295 Kcal/Pizza | Med: 448kcal/Pizza| Ultimate Cheese : PER: 250 kcal/Pizza | MED: 375 kcal/Pizza| Stuff Crust Chicken Seekh Kebab Add : Per: 389 kcal/Pizza | Med: 614 Kcal/Pizza. Contains Cereals containing Gluten (Wheat), Soya and Milk & Milk Products.",
+                "imageId": "FOOD_CATALOG/IMAGES/CMS/2025/4/17/a17de87b-9413-49b6-9982-42a676e8cbab_6e749005-f69b-4754-a229-18681a4f03c8.jpg_compressed",
+                "inStock": 1
+              }
+            },
+            {
+              "info": {
+                "id": "113806596",
+                "name": "Chicken Supreme",
+                "category": "Non Veg Pizza",
+                "description": "Serves 1 | Loaded with delicious chicken tikka, flavourful herbed chicken, spicy schezwan chicken meatball with flavourful pan sauce and mozzarella cheese. (PAN Per/Med-273 Kcal/100g | TnC-284 Kcal/100g | Stuffed Crust Add : Per: 295 Kcal/Pizza | Med: 448kcal/Pizza| Ultimate Cheese : PER: 250 kcal/Pizza | MED: 375 kcal/Pizza| Stuff Crust Chicken Seekh Kebab Add : Per: 389 kcal/Pizza | Med: 614 Kcal/Pizza. Contains Cereals containing Gluten (Wheat), Soya and Milk & Milk Products.",
+                "imageId": "FOOD_CATALOG/IMAGES/CMS/2025/4/17/e4d15638-5d14-444b-96ce-0314b1d4b0dc_e626776a-fa5d-4302-9c53-58893fe5c90d.jpg_compressed",
+                "inStock": 1
+              }
+            }
+          ]
+        }
+      },
+      "425508": {
+        "card": {
+          "itemCards": [
+            {
+              "info": {
+                "id": "113967444",
+                "name": "Double Chicken Roll",
+                "category": "Rolls",
+                "description": "Double fun with double chicken strip filling, layerful parantha onions and two spicy sauce [1 unit of Double Chicken Roll, Serves 1]",
+                "imageId": "ebcda29a62123bbf8bb8a33bbe2ab847",
+                "inStock": 1,
+                "price": 16857
+              }
+            },
+            {
+              "id": "113967443",
+              "name": "Classic Chicken Roll",
+              "category": "Rolls",
+              "description": "Street style roll with single chicken strip, onions and two spicy sauce [1 unit of Classic Chicken Roll]",
+              "imageId": "ebd8e706049e4fd5ca79ecf708f8ecba",
+              "inStock": 1,
+              "price": 12900
+            },
+            {
+              "info": {
+                "id": "113967442",
+                "name": "Double Chicken Roll Meal for 1",
+                "category": "Rolls",
+                "description": "Save Rs. 24 with a Double Chicken Roll with servings of 1 Large Fries, 2 delish dips and 1 Pepsi PET 475ml [1 unit of Double Chicken Roll, Serves 1]",
+                "imageId": "FOOD_CATALOG/IMAGES/CMS/2024/5/17/00af9641-700d-462f-890f-47e358b63bfb_68cecb16-fd2a-4d7d-9392-b5f83d72eaaf.jpg",
+                "inStock": 1,
+                "price": 37905
+              }
+            },
+            {
+              "info": {
+                "id": "113967445",
+                "name": "Classic Chicken Roll Meal for 2",
+                "category": "Rolls",
+                "description": "2 units of The classic KFC Chicken Roll with servings of 1 Large Fries, 2 delish dips and 1 Pepsi PET 475ml [2 units of Classic Chicken Roll, Serves 2]",
+                "imageId": "FOOD_CATALOG/IMAGES/CMS/2024/5/10/183cb04b-d716-443a-91d9-27f26c566adc_e3c2c7c7-b9a8-4881-a4b5-05532b10ec0a.jpg",
+                "inStock": 1,
+                "price": 47905
+              }
+            },
+            {
+              "info": {
+                "id": "145448060",
+                "name": "Thai Spicy Chicken Roll",
+                "category": "Rolls",
+                "description": "Fresh burst of Thai flavours and sauces in a flaky paratha, chicken strips and vegetables",
+                "imageId": "FOOD_CATALOG/IMAGES/CMS/2024/7/9/fa48d82c-2322-4ba7-b419-27e79ca1b217_0800d19e-02b8-45e2-ad64-21ee0d877821.jpg",
+                "inStock": 1,
+                "price": 13900
+              }
+            },
+            {
+              "info": {
+                "id": "145448058",
+                "name": "Indian Tandoori Chicken Roll",
+                "category": "Rolls",
+                "description": "Flavorful roll made with flaky lachha paratha, perfectly fried chicken strips in rich and creamy tandoori sauce",
+                "imageId": "FOOD_CATALOG/IMAGES/CMS/2024/7/9/4c966f38-c191-4d0e-a54c-c70b832e4de1_69ee13c1-f267-4385-ab98-6efbc811de33.jpg",
+                "inStock": 1,
+                "price": 12900
+              }
+            }
+          ]
+        }
+      },
+      "411325": {
+        "card": {
+          "itemCards": [
+            {
+              "info": {
+                "id": "123345092",
+                "name": "Veg Manchurian Gravy",
+                "category": "Chinese",
+                "imageId": "fd80858523e880d071bb2c97c737eaf2",
+                "inStock": 1,
+                "isVeg": 1,
+                "price": 27000
+              }
+            },
+            {
+              "info": {
+                "id": "108818798",
+                "name": "Veg Manchurian Dry",
+                "category": "Chinese",
+                "imageId": "286d148e5ac5acf08208eee1fbf29d2d",
+                "inStock": 1,
+                "isVeg": 1,
+                "price": 24500
+              }
+            },
+            {
+              "info": {
+                "id": "74510868",
+                "name": "Veg Hakka Noodles",
+                "category": "Chinese",
+                "imageId": "soulkf1hmfetjaql2x30",
+                "inStock": 1,
+                "isVeg": 1,
+                "price": 21000
+              }
+            },
+            {
+              "info": {
+                "id": "74510796",
+                "name": "Chicken Tandoori",
+                "category": "Starters",
+                "imageId": "a692d90bdefa5c5f045930b35ad5e0cc",
+                "inStock": 1,
+                "price": 29000
+              }
+            },
+            {
+              "info": {
+                "id": "108911823",
+                "name": "Chicken Malai Tandoori",
+                "category": "Starters",
+                "imageId": "a5c4eb60c060eb207e8e422a14d0edfb",
+                "inStock": 1,
+                "price": 30000
+              }
+            },
+            {
+              "info": {
+                "id": "123344505",
+                "name": "Chicken Afghani",
+                "category": "Starters",
+                "imageId": "b748cb72a1a0fec6cb551151d6ce61c8",
+                "inStock": 1,
+                "price": 34500
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
