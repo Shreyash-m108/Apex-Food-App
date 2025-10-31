@@ -8,8 +8,12 @@ const useRestaurantMenu = (resId) => {
   }, []);
 
   const getData = async () => {
-    const data = await fetch("http://localhost:8080/menu");
+    const data = await fetch(
+      "https://www.zomato.com/webroutes/getPage?page_url=/sangli/restaurants&location"
+    );
     const jsonData = await data.json();
+    console.log(jsonData);
+
     setResMenu(jsonData);
   };
   return resMenu;

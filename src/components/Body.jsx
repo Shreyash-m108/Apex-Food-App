@@ -15,29 +15,20 @@ const Body = () => {
 
   const getData = async () => {
     const url =
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.8530093&lng=74.56234789999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+      "https://www.zomato.com/webroutes/getPage?page_url=/sangli/restaurants?page=1&location";
 
     const data = await fetch(url);
     const jsonData = await data.json();
-
-    // find the card that has restaurants (index varies)
-    const cards = jsonData?.data?.cards || [];
-    const restCard = cards.find(
-      (c) =>
-        c?.card?.card?.gridElements?.infoWithStyle?.restaurants ||
-        c?.gridElements?.infoWithStyle?.restaurants
+    const restaurantList = jsonData?.page_data?.sections?.SECTION_SEARCH_RESULT;
+    const actualRestaurants = restaurantList.filter(
+      (res) => res?.type === "restaurant"
     );
+    console.log(actualRestaurants);
 
-    const newRestaurants =
-      restCard?.card?.card?.gridElements?.infoWithStyle?.restaurants ??
-      restCard?.gridElements?.infoWithStyle?.restaurants ??
-      [];
-
-    setListOfRestaurants(newRestaurants);
-    setFilterRestaurants(newRestaurants);
+    setFilterRestaurants(actualRestaurants);
+    setListOfRestaurants(actualRestaurants);
   };
 
-  
   const status = useOnlineStatus();
   if (status === false)
     return <h1>It seems to be you are disconnected from internet </h1>;
@@ -103,9 +94,8 @@ const Body = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl w-full items-stretch">
           {filterRestaurants.map((restaurant) => (
             <Link
-              key={restaurant.info.id}
-              to={`/restaurant/${restaurant.info.id}`}
-              className="h-full"
+              key={restaurant?.info?.resId}
+              to={`/restaurant/${restaurant.order.actionInfo.clickUrl}`}
             >
               <RestaurantCard resData={restaurant} />
             </Link>
