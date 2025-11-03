@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { MENU_API } from "./constant";
 
-const useRestaurantMenu = (resId) => {
+const useRestaurantMenu = (path) => {
   const [resMenu, setResMenu] = useState(null);
 
   useEffect(() => {
@@ -9,10 +10,10 @@ const useRestaurantMenu = (resId) => {
 
   const getData = async () => {
     const data = await fetch(
-      "https://www.zomato.com/webroutes/getPage?page_url=/sangli/restaurants&location"
+      "https://www.zomato.com/webroutes/getPage?page_url=" + path + "&Location"
     );
+
     const jsonData = await data.json();
-    console.log(jsonData);
 
     setResMenu(jsonData);
   };

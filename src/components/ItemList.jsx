@@ -1,39 +1,42 @@
-import { CDN_URL } from "../utils/constant";
+import vegImage from "../utils/assets/non-veg-icon.png";
+import nonVegImage from "../utils/assets/non-veg-icon.png";
 
-const ItemList = ({ items = [] }) => {
+const ItemList = ({ items }) => {
+  const menuItems = items.menu?.categories[0]?.category?.items;
+
   return (
-    <div className="flex flex-col items-center w-full">
-      {items.map((it) => (
+    <div className="mt-3">
+      {menuItems.map((item) => (
         <div
-          key={it?.info?.id}
-          className="flex justify-between items-start p-4 w-full max-w-2xl border-b border-gray-300 text-left"
+          key={item.item.id}
+          className="flex justify-between items-center border-b p-3 hover:bg-gray-50"
         >
-          {/* Left: Text */}
-          <div className="flex flex-col items-start w-9/12">
-            <span className="font-bold text-gray-900 text-lg">
-              {it?.info?.name}
+          <div className="flex flex-col text-left">
+            {item?.item?.tag_slugs[0] === "non-veg" ? "🔴" : "🟢"}
+
+            <span className="font-semibold text-gray-800">
+              {item?.item?.name}{" "}
             </span>
-            <p className="text-sm text-gray-600 mt-1">
-              {it?.info?.description}
-            </p>
+            <span className="text-sm text-gray-600">
+              ₹{item?.item?.default_price}
+            </span>
           </div>
 
-          {/* Right: Image + Button */}
-          <div className="w-3/12 flex flex-col justify-end items-center relative">
-            {it?.info?.imageId ? (
+          <div className="relative flex flex-col items-center">
+            {item?.item?.item_image_thumb_url ? (
               <img
-                src={CDN_URL + it?.info?.imageId}
-                className="object-cover rounded-xl shadow-md w-[120px] h-[120px]"
-                alt={it?.info?.name || "menu item"}
+                src={item.item.item_image_thumb_url}
+                alt={item?.item?.name}
+                className="w-28 h-28 object-cover rounded-lg border"
               />
             ) : (
-              <div className="flex items-center justify-center bg-gray-100 rounded-xl text-xs text-gray-500 shadow-md w-[120px] h-[120px]">
+              <div className="w-28 h-28 flex items-center justify-center text-xs text-gray-400 border rounded-lg bg-gray-50">
                 No Preview
               </div>
             )}
 
-            <button className="absolute -bottom-4 px-4 pb-0.5 border border-black bg-white hover:bg-gray-300 rounded-xl font-bold text-green-500">
-              + ADD
+            <button className="absolute bottom-1/2 translate-y-15 border rounded-lg px-3 py-1 bg-white text-sm font-medium hover:bg-gray-100 shadow-sm transition">
+              Add +
             </button>
           </div>
         </div>

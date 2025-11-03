@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         errorElement: <h1>Something Went Wrong "/contact"</h1>,
       },
       {
-        path: "/restaurant/:resId",
+        path: "/restaurant/*",
         element: <RestaurantMenu />,
       },
       {

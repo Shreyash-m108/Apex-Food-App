@@ -23,7 +23,6 @@ const Body = () => {
     const actualRestaurants = restaurantList.filter(
       (res) => res?.type === "restaurant"
     );
-    console.log(actualRestaurants);
 
     setFilterRestaurants(actualRestaurants);
     setListOfRestaurants(actualRestaurants);
@@ -71,11 +70,8 @@ const Body = () => {
             className="px-3 m-4 border-1 rounded-lg cursor-pointer bg-gray-100 hover:-translate-y-1 transition-all duration-300"
             onClick={() => {
               const filterList = listOfRestaurants.filter((res) => {
-                const rating =
-                  Number(res?.info?.avgRating) ||
-                  Number(res?.info?.avgRatingString) ||
-                  0;
-                return rating > 4.5;
+                const rating = Number(res?.info?.rating?.rating_text) || 0;
+                return rating > 4;
               });
               setFilterRestaurants(filterList); // 👈 update the list you render
             }}
@@ -95,7 +91,7 @@ const Body = () => {
           {filterRestaurants.map((restaurant) => (
             <Link
               key={restaurant?.info?.resId}
-              to={`/restaurant/${restaurant.order.actionInfo.clickUrl}`}
+              to={`/restaurant${restaurant?.order?.actionInfo?.clickUrl}`}
             >
               <RestaurantCard resData={restaurant} />
             </Link>
