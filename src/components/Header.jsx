@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   let [login, setLogin] = useState("Login");
@@ -9,6 +10,10 @@ const Header = () => {
   useEffect(() => {
     console.log("useEffect Rander");
   }, []);
+
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
+
   return (
     <header className="flex justify-between items-center bg-slate-50 shadow-md px-6 py-2">
       <div className="logo-container ">
@@ -44,7 +49,7 @@ const Header = () => {
             </Link>
           </li>
           <li className="font-medium text-gray-600 p-3 block hover:shadow-2xl hover:-translate-y-1 transition-all rounded-2xl">
-            Cart
+            Cart ({cartItems.length})
           </li>
           <li className="font-medium text-gray-600">
             <Link

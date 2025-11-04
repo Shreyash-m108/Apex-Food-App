@@ -6,14 +6,18 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { Provider } from "react-redux";
+import appStore from "./utils/store/appStore";
 
 // layout with header always visible
 const AppLayout = () => {
   return (
-    <div className="mainApp">
-      <Header />
-      <Outlet /> {/* child routes will render here */}
-    </div>
+    <Provider store={appStore}>
+      <div className="mainApp">
+        <Header />
+        <Outlet /> {/* child routes will render here */}
+      </div>
+    </Provider>
   );
 };
 

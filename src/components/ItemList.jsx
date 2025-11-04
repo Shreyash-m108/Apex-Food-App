@@ -1,8 +1,12 @@
-import vegImage from "../utils/assets/non-veg-icon.png";
-import nonVegImage from "../utils/assets/non-veg-icon.png";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/store/cartSlice";
 
 const ItemList = ({ items }) => {
   const menuItems = items.menu?.categories[0]?.category?.items;
+  const dispatcher = useDispatch();
+  const handleCart = () => {
+    dispatcher(addItem(menuItems));
+  };
 
   return (
     <div className="mt-3">
@@ -35,7 +39,10 @@ const ItemList = ({ items }) => {
               </div>
             )}
 
-            <button className="absolute bottom-1/2 translate-y-15 border rounded-lg px-3 py-1 bg-white text-sm font-medium hover:bg-gray-100 shadow-sm transition">
+            <button
+              className="absolute bottom-1/2 translate-y-15 border rounded-lg px-3 py-1 bg-white text-sm font-medium hover:bg-gray-100 shadow-sm transition"
+              onClick={handleCart}
+            >
               Add +
             </button>
           </div>
