@@ -8,6 +8,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { Provider } from "react-redux";
 import appStore from "./utils/store/appStore";
+import Cart from "./components/Cart";
 
 // layout with header always visible
 const AppLayout = () => {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
             <Grocery />
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

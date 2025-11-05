@@ -47,7 +47,7 @@ const Body = () => {
             }}
           />
           <button
-            className="px-4 bg-green-400 hover:bg-green-700 text-white mx-4 border-1 border-black rounded-lg cursor-pointer hover:-translate-y-1 transition-all duration-300"
+            className="px-4 bg-green-400 hover:bg-green-700 text-white mx-4 border border-black rounded-lg cursor-pointer hover:-translate-y-1 transition-all duration-300"
             onClick={() => {
               const filterList = listOfRestaurants.filter((res) => {
                 const nameMatch = res.info?.name
@@ -67,7 +67,7 @@ const Body = () => {
         </div>
         <div className="rating-button">
           <button
-            className="px-3 m-4 border-1 rounded-lg cursor-pointer bg-gray-100 hover:-translate-y-1 transition-all duration-300"
+            className="px-3 m-4 border rounded-lg cursor-pointer bg-gray-100 hover:-translate-y-1 transition-all duration-300"
             onClick={() => {
               const filterList = listOfRestaurants.filter((res) => {
                 const rating = Number(res?.info?.rating?.rating_text) || 0;
@@ -79,7 +79,7 @@ const Body = () => {
             Top Rated
           </button>
           <button
-            className="px-3 m-4 border-1 rounded-lg cursor-pointer bg-gray-100 hover:-translate-y-1 transition-all duration-300"
+            className="px-3 m-4 border rounded-lg cursor-pointer bg-gray-100 hover:-translate-y-1 transition-all duration-300"
             onClick={() => setFilterRestaurants(listOfRestaurants)}
           >
             Clear

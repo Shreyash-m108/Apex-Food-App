@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Cart from "./Cart";
 
 const Header = () => {
   let [login, setLogin] = useState("Login");
@@ -48,8 +49,13 @@ const Header = () => {
               Contact
             </Link>
           </li>
-          <li className="font-medium text-gray-600 p-3 block hover:shadow-2xl hover:-translate-y-1 transition-all rounded-2xl">
-            Cart ({cartItems.length})
+          <li className="font-medium text-gray-600 ">
+            <Link
+              to={"/cart"}
+              className="p-3 block hover:shadow-2xl hover:-translate-y-1 transition-all rounded-2xl"
+            >
+              Cart ({cartItems.length})
+            </Link>
           </li>
           <li className="font-medium text-gray-600">
             <Link

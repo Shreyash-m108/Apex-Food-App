@@ -4,8 +4,8 @@ import { addItem } from "../utils/store/cartSlice";
 const ItemList = ({ items }) => {
   const menuItems = items.menu?.categories[0]?.category?.items;
   const dispatcher = useDispatch();
-  const handleCart = () => {
-    dispatcher(addItem(menuItems));
+  const handleCart = (item) => {
+    dispatcher(addItem(item));
   };
 
   return (
@@ -13,19 +13,26 @@ const ItemList = ({ items }) => {
       {menuItems.map((item) => (
         <div
           key={item.item.id}
-          className="flex justify-between items-center border-b p-3 hover:bg-gray-50"
+          className="flex justify-between items-start border-b p-3 hover:bg-gray-50"
         >
-          <div className="flex flex-col text-left">
-            {item?.item?.tag_slugs[0] === "non-veg" ? "🔴" : "🟢"}
+          <div className="flex flex-col text-left w-8/12">
+            <span className="text-lg">
+              {item?.item?.tag_slugs[0] === "non-veg" ? "🔴" : "🟢"}
+            </span>
 
             <span className="font-semibold text-gray-800">
-              {item?.item?.name}{" "}
+              {item?.item?.name}
             </span>
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-gray-700 mt-1 font-medium">
               ₹{item?.item?.default_price}
             </span>
-          </div>
 
+            {item?.item?.desc && (
+              <p className="text-sm text-gray-600 mt-1 leading-snug">
+                {item.item.desc}
+              </p>
+            )}
+          </div>
           <div className="relative flex flex-col items-center">
             {item?.item?.item_image_thumb_url ? (
               <img
@@ -40,8 +47,8 @@ const ItemList = ({ items }) => {
             )}
 
             <button
-              className="absolute bottom-1/2 translate-y-15 border rounded-lg px-3 py-1 bg-white text-sm font-medium hover:bg-gray-100 shadow-sm transition"
-              onClick={handleCart}
+              className="absolute -bottom-0.5 hover:-translate-y-1 transition-all border rounded-lg px-3 py-1 bg-white text-sm font-medium hover:bg-gray-100 shadow-sm cursor-pointer"
+              onClick={() => handleCart(item?.item)}
             >
               Add +
             </button>
