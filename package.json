@@ -14,14 +14,21 @@
   },
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html "
+    "build": "parcel build index.html ",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Shreyash-m108/Apex-Food-App.git"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@testing-library/react": "^16.3.0",
     "autoprefixer": "^10.4.21",
+    "babel-jest": "^30.2.0",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.16"
   }
